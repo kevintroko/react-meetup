@@ -7,9 +7,13 @@ const Todo = ({ title }) => {
     // useStateFalse returns an array with two elements
 
     const deleteHandler = (e) => {
-        console.log(e, open);
+        console.log(open);
         setOpen(true);
     };
+
+    const closeModalHandler = () => {
+        setOpen(false);
+    }
 
     return <>
         <div className='card'>
@@ -21,8 +25,8 @@ const Todo = ({ title }) => {
                 </button>
             </div>
 
-            { open && <Modal /> }
-            { open && <Backdrop /> }
+            { open && <Modal onCancel={closeModalHandler} onConfirm={closeModalHandler}/> }
+            { open && <Backdrop onClick={closeModalHandler}/> }
         </div>
     </>;
 }
